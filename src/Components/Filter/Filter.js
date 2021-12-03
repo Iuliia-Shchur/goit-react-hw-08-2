@@ -8,16 +8,21 @@ function Filter() {
   const dispatch = useDispatch();
 
   return (
-    <label className={s.label}>
-      Find contacts by name
-      <input
-        className={s.input}
-        type="text"
-        name="name"
-        value={filter}
-        onChange={(e) => dispatch(filterChange(e.target.value))}
-      />
-    </label>
+    <>
+      <></>
+      <div className={s.wrapper}>
+        <label className={s.label}>
+          Find contacts by name
+          <input
+            className={s.input}
+            type="text"
+            name="name"
+            value={filter}
+            onChange={(e) => dispatch(filterChange(e.target.value))}
+          />
+        </label>
+      </div>
+    </>
   );
 }
 

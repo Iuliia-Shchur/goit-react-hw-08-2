@@ -1,9 +1,12 @@
 import s from "./ContactForm.module.css";
-
+import Filter from "../Filter/Filter";
+import ContactList from "../ContactList/ContactList";
 import { useState } from "react";
 import operations from "../../redux/contacts/operations";
 import { useSelector, useDispatch } from "react-redux";
 import { getContacts } from "../../redux/contacts/selector";
+import { toast } from "react-toastify";
+
 function ContactForm() {
   const [name, setName] = useState("");
   const [number, setNumber] = useState("");
@@ -34,6 +37,7 @@ function ContactForm() {
       return alert("This contact has already been added to the list");
     }
     dispatch(operations.addContacts({ name, number }));
+    toast.success(`Contact ${name} has been added to the list!`);
     resetForm();
   };
 
@@ -43,36 +47,44 @@ function ContactForm() {
   };
 
   return (
-    <div className={s.formWrapper}>
-      <form className={s.form} onSubmit={handleSubmit}>
-        <label className={s.label}>
-          Name
-          <input
-            className={s.input}
-            value={name}
-            type="text"
-            name="name"
-            placeholder="Name"
-            pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-            onChange={inputChange}
-          />
-        </label>
+    <>
+      <div className={s.formWrapper}>
+        <form className={s.form} onSubmit={handleSubmit}>
+          <h1 className={s.title}>Add your contacts in seconds</h1>
+          <label className={s.label}>
+            Name
+            <input
+              className={s.input}
+              value={name}
+              type="text"
+              name="name"
+              placeholder="Name"
+              pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+              onChange={inputChange}
+            />
+          </label>
 
-        <label className={s.label}>
-          Number
-          <input
-            className={s.input}
-            type="tel"
-            value={number}
-            name="number"
-            placeholder="Number"
-            pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
-            onChange={inputChange}
-          />
-        </label>
-        <button className={s.button}>Add contact</button>
-      </form>
-    </div>
+          <label className={s.label}>
+            Number
+            <input
+              className={s.input}
+              type="tel"
+              value={number}
+              name="number"
+              placeholder="Number"
+              pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
+              onChange={inputChange}
+            />
+          </label>
+          <button className={s.button}>Add contact</button>
+        </form>
+      </div>
+      <div>
+        <h2 className={s.tableTitle}>Contacts</h2>
+        <Filter />
+        <ContactList />
+      </div>
+    </>
   );
 }
 

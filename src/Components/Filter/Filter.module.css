@@ -1,13 +1,17 @@
 .label {
-  display: flex;
-  flex-direction: column;
-  width: fit-content;
-  margin-bottom: 20px;
+  /* width: fit-content; */
+  margin-bottom: 50px;
+  font-size: 24px;
+  font-style: italic;
+  font-weight: 700;
 }
 
 .input {
   margin-top: 8px;
-  height: 20px;
+  height: 35px;
+  margin-left: 40px;
+  width: 400px;
+  background-color: #e9d5cf;
 }
 
 .input:hover,
@@ -15,4 +19,9 @@ input:focus {
   box-shadow: 0 0 6px 2px rgb(28 146 224 / 50%);
   border: 1px solid rgba(28, 146, 224, 0.678);
   outline: none;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: row;
 }
