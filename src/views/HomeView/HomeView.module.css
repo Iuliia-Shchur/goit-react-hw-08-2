@@ -4,12 +4,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 15px;
 }
 
 .typingDemo {
   width: 62ch;
-  animation: typing 3s steps(18), blink 0.5s step-end infinite alternate;
-  white-space: nowrap;
+  animation: typing 2s steps(22), blink 0.5s step-end infinite alternate;
+
   overflow: hidden;
   border-right: 3px solid;
   font-family: monospace;

@@ -16,7 +16,7 @@ import authSelectors from "../redux/auth/auth-selectors";
 export default function MenuAppBar() {
   const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
 
-  const [auth, setAuth] = React.useState(true);
+  const [auth] = React.useState(true);
   const [anchorEl, setAnchorEl] = React.useState(null);
 
   const handleMenu = (event) => {

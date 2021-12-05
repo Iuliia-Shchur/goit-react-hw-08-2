@@ -1,6 +1,4 @@
 import s from "./ContactForm.module.css";
-import Filter from "../Filter/Filter";
-import ContactList from "../ContactList/ContactList";
 import { useState } from "react";
 import operations from "../../redux/contacts/operations";
 import { useSelector, useDispatch } from "react-redux";
@@ -81,8 +79,6 @@ function ContactForm() {
       </div>
       <div>
         <h2 className={s.tableTitle}>Contacts</h2>
-        <Filter />
-        <ContactList />
       </div>
     </>
   );

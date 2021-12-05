@@ -1,18 +1,14 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;900&display=swap");
-/* 
-body {
-  margin: 0;
-  width: 100vw;
-  height: 100vh;
-  background: #ecf0f3;
-  display: flex;
-  align-items: center;
-  text-align: center;
-  justify-content: center;
-  place-items: center;
-  overflow: hidden;
-  font-family: poppins;
-} */
+
+.text {
+  margin-top: 15px;
+  text-align: end;
+  margin-bottom: 15px;
+}
+
+.link {
+  margin-left: 5px;
+}
 
 .container {
   position: relative;
@@ -20,7 +16,7 @@ body {
   margin-right: auto;
   margin-top: 100px;
   width: 400px;
-  height: 400px;
+  height: 410px;
   border-radius: 20px;
   padding: 40px;
   box-sizing: border-box;

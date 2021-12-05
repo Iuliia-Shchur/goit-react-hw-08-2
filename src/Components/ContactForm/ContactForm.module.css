@@ -1,53 +1,11 @@
-/* .formWrapper {
-  border: 1px solid black;
-  width: 400px;
-  margin-bottom: 30px;
-}
-
-.form {
-  display: flex;
-  flex-direction: column;
+.formWrapper {
   padding: 15px;
 }
-
-.label {
-  display: flex;
-  flex-direction: column;
-  width: fit-content;
-  margin-bottom: 20px;
-}
-
-.input {
-  margin-top: 8px;
-  height: 20px;
-}
-
-.input:hover,
-input:focus {
-  box-shadow: 0 0 6px 2px rgb(28 146 224 / 50%);
-  border: 1px solid rgba(28, 146, 224, 0.678);
-  outline: none;
-}
-
-.button {
-  width: fit-content;
-  background-color: white;
-  border: 0.5px solid black;
-  border-radius: 4px;
-  height: 20px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-}
-
-.button:hover {
-  background-color: rgba(28, 146, 224, 0.678);
-  color: white;
-  border: transparent;
-} */
 
 .form {
   position: relative;
   margin: 50px auto;
-  width: 600px;
+  max-width: 600px;
   padding: 33px 25px 29px;
   background: white;
   border-bottom: 1px solid #c4c4c4;
@@ -55,22 +13,7 @@ input:focus {
   -webkit-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.25);
   box-shadow: 0 1px 5px rgba(0, 0, 0, 0.25);
 }
-/* .form:before,
-.form:after {
-  content: "";
-  position: absolute;
-  bottom: 1px;
-  left: 0;
-  right: 0;
-  height: 10px;
-  background: inherit;
-  border-bottom: 1px solid #d2d2d2;
-  border-radius: 4px;
-}
-.form:after {
-  bottom: 3px;
-  border-color: #dcdcdc;
-} */
+
 .tableTitle {
   text-align: center;
   font-size: 36px;
@@ -212,10 +155,10 @@ input {
   display: block;
   margin-left: auto;
   margin-right: auto;
+  padding: 15px;
+  width: fit-content;
+  min-height: 54px;
 
-  width: 30%;
-  height: 54px;
-  padding: 0;
   font-size: 22px;
   color: black;
   text-align: center;

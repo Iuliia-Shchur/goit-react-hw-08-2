@@ -1,17 +1,16 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import authOperations from "../redux/auth/auth-operations";
+import authOperations from "../../redux/auth/auth-operations";
 import s from "./LoginView.module.css";
-import authSelectors from "../redux/auth/auth-selectors";
-import { useEffect } from "react";
+import authSelectors from "../../redux/auth/auth-selectors";
+
+import { Link } from "react-router-dom";
 
 export default function LoginView() {
   const dispatch = useDispatch();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
-  //   console.log(isLoggedIn);
-  const [error, setError] = useState(null);
 
   const handleChange = ({ target: { name, value } }) => {
     switch (name) {
@@ -46,6 +45,7 @@ export default function LoginView() {
                 name="email"
                 value={email}
                 onChange={handleChange}
+                autoComplete="off"
               />
             </label>
 
@@ -57,6 +57,8 @@ export default function LoginView() {
                 name="password"
                 value={password}
                 onChange={handleChange}
+                minLength="8"
+                autoComplete="off"
               />
             </label>
           </div>
@@ -65,6 +67,12 @@ export default function LoginView() {
             Log in
           </button>
         </form>
+        <p className={s.text}>
+          Don't have an account?
+          <Link to="/register" className={s.link}>
+            Sign up
+          </Link>
+        </p>
       </div>
     )
   );

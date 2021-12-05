@@ -17,55 +17,50 @@ const ContactList = () => {
   }, [dispatch]);
 
   const allContacts = getContacts.length !== 0;
-  return (
-    // <div className={s.listWrapper}>
-    allContacts ? (
-      <Table striped bordered hover size="sm" className={s.tablePosition}>
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>Name</th>
-            <th>Number</th>
-            <th>Delete</th>
-          </tr>
-        </thead>
-        <tbody>
-          {getContacts.map(({ name, number, id }) => {
-            return (
-              <tr key={id}>
-                <td>#</td>
-                <td>{name}</td>
-                <td>{number}</td>
-                <td>
-                  <button
-                    className={s.button}
-                    type="button"
-                    onClick={() =>
-                      dispatch(
-                        operations.deleteContacts(
-                          id,
-                          toast.success(
-                            `Contact ${name} has been deleted successfully!`
-                          )
+  return allContacts ? (
+    <Table striped bordered hover size="sm" className={s.tablePosition}>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Name</th>
+          <th>Number</th>
+          <th>Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        {getContacts.map(({ name, number, id }) => {
+          return (
+            <tr key={id}>
+              <td>#</td>
+              <td>{name}</td>
+              <td>{number}</td>
+              <td>
+                <button
+                  className={s.button}
+                  type="button"
+                  onClick={() =>
+                    dispatch(
+                      operations.deleteContacts(
+                        id,
+                        toast.success(
+                          `Contact ${name} has been deleted successfully!`
                         )
                       )
-                    }
-                  >
-                    Delete
-                  </button>
-                </td>
-              </tr>
-            );
-          })}
-        </tbody>
-      </Table>
-    ) : (
-      <p className={s.text}>
-        There are no contacts yet! Please, add your contacts!
-      </p>
-    )
-
-    // </div>
+                    )
+                  }
+                >
+                  Delete
+                </button>
+              </td>
+            </tr>
+          );
+        })}
+      </tbody>
+    </Table>
+  ) : (
+    <p className={s.text}>
+      There are no contacts yet! Please, add your contacts!
+    </p>
   );
 };
 

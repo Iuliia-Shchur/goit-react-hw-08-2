@@ -21,8 +21,7 @@ const register = createAsyncThunk(
       token.set(data.token);
       return data;
     } catch (error) {
-      rejectWithValue(toast.error(`Oops! Try again please!`));
-      throw new Error({ message: "error" });
+      return rejectWithValue(toast.error(`Oops! Try again please!`));
     }
   }
 );
@@ -35,27 +34,23 @@ const logIn = createAsyncThunk(
       token.set(data.token);
       return data;
     } catch (error) {
-      rejectWithValue(toast.error(`Oops! Try again please!`));
-      throw new Error({ message: "error" });
+      return rejectWithValue(toast.error(`Oops! Try again please!`));
     }
   }
 );
 
-const logOut = createAsyncThunk("auth/logout", async () => {
-  try {
-    await axios.post("/users/logout");
-    token.unset();
-  } catch (error) {}
-});
-/*
- * GET @ /users/current
- * headers:
- *    Authorization: Bearer token
- *
- * 1. Забираем токен из стейта через getState()
- * 2. Если токена нет, выходим не выполняя никаких операций
- * 3. Если токен есть, добавляет его в HTTP-заголовок и выполянем операцию
- */
+const logOut = createAsyncThunk(
+  "auth/logout",
+  async (_, { rejectWithValue }) => {
+    try {
+      await axios.post("/users/logout");
+      token.unset();
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
+
 const refreshCurrentUser = createAsyncThunk(
   "auth/refresh",
   async (_, thunkAPI) => {
@@ -63,7 +58,6 @@ const refreshCurrentUser = createAsyncThunk(
     const persistedToken = state.auth.token;
 
     if (persistedToken === null) {
-      console.log("Токена нет, уходим из fetchCurrentUser");
       return thunkAPI.rejectWithValue();
     }
 
@@ -72,7 +66,7 @@ const refreshCurrentUser = createAsyncThunk(
       const { data } = await axios.get("/users/current");
       return data;
     } catch (error) {
-      // TODO: Добавить обработку ошибки error.message
+      return thunkAPI.rejectWithValue(error.message);
     }
   }
 );

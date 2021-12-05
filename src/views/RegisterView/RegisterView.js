@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import authOperations from "../redux/auth/auth-operations";
+import authOperations from "../../redux/auth/auth-operations";
 import s from "./RegisterView.module.css";
+import { Link } from "react-router-dom";
 
 export default function RegisterView() {
   const dispatch = useDispatch();
@@ -44,6 +45,7 @@ export default function RegisterView() {
               name="name"
               value={name}
               onChange={handleChange}
+              autoComplete="off"
             />
           </label>
 
@@ -55,6 +57,7 @@ export default function RegisterView() {
               name="email"
               value={email}
               onChange={handleChange}
+              autoComplete="off"
             />
           </label>
 
@@ -67,6 +70,7 @@ export default function RegisterView() {
               value={password}
               onChange={handleChange}
               minLength="8"
+              autoComplete="off"
             />
           </label>
         </div>
@@ -75,6 +79,12 @@ export default function RegisterView() {
           Register
         </button>
       </form>
+      <p className={s.text}>
+        Already have an account?
+        <Link to="/login" className={s.link}>
+          Sign in
+        </Link>
+      </p>
     </div>
   );
 }

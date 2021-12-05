@@ -11,3 +11,15 @@
   color: rgb(138, 74, 127);
   border: 1px solid rgb(138, 74, 127);
 }
+
+.container {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.name {
+  font-weight: 700;
+  margin-right: 4px;
+}
